@@ -2538,6 +2538,66 @@ def register_routes(app):
                                attempt=attempt,
                                question_results=question_results)
 
+    @app.route('/courses/<int:course_id>/certificate')
+    @login_required
+    def download_certificate(course_id):
+        course = Course.query.get_or_404(course_id)
+        if not has_user_completed_course(current_user.id, course.id):
+            flash('You must complete all lessons and pass the assignment to get a certificate.', 'warning')
+            return redirect(url_for('view_course', course_id=course_id))
+        
+        if not course.issue_certificates:
+            flash('Certificates are not enabled for this course.', 'info')
+            return redirect(url_for('view_course', course_id=course_id))
+
+        from reportlab.pdfgen import canvas
+        from reportlab.lib.pagesizes import letter
+        import io
+        from flask import send_file
+        
+        buffer = io.BytesIO()
+        p = canvas.Canvas(buffer, pagesize=letter)
+        width, height = letter
+        
+        p.setStrokeColorRGB(0.1, 0.2, 0.4)
+        p.setLineWidth(5)
+        p.rect(50, 50, width-100, height-100)
+        
+        p.setFont("Helvetica-Bold", 35)
+        p.drawCentredString(width/2.0, height - 150, "Certificate of Completion")
+        p.setFont("Helvetica", 20)
+        p.drawCentredString(width/2.0, height - 250, "This is to certify that")
+        p.setFont("Helvetica-Bold", 30)
+        p.drawCentredString(width/2.0, height - 300, current_user.username)
+        p.setFont("Helvetica", 20)
+        p.drawCentredString(width/2.0, height - 350, "has successfully completed the course")
+        p.setFont("Helvetica-Bold", 25)
+        p.drawCentredString(width/2.0, height - 400, course.title)
+        p.setFont("Helvetica", 15)
+        p.drawCentredString(width/2.0, height - 550, f"Issued on {datetime.utcnow().strftime('%B %d, %Y')}")
+        p.drawCentredString(width/2.0, height - 580, "Erlang Systems LMS")
+        
+        p.showPage()
+        p.save()
+        buffer.seek(0)
+        
+        pdf_data = buffer.getvalue()
+        
+        try:
+            from .utils.email_helpers import send_certificate_email
+            send_certificate_email(
+                to_email=current_user.email,
+                username=current_user.username,
+                course_title=course.title,
+                pdf_content=pdf_data
+            )
+            flash('Certificate has been sent to your email and is ready for download.', 'success')
+        except Exception as e:
+            flash('Certificate generated for download (email could not be sent).', 'info')
+        
+        buffer.seek(0)
+        return send_file(buffer, as_attachment=True, download_name=f"certificate_{course.id}.pdf", mimetype='application/pdf')
+
 def check_and_send_mandatory_course_reminders():
     """Check for mandatory courses with 7 days or less remaining and send reminder emails"""
     from .utils.email_helpers import send_mandatory_course_reminder_email
