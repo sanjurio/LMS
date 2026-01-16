@@ -2711,32 +2711,27 @@ def check_and_send_mandatory_course_reminders():
 
 
 def has_user_completed_course(user_id, course_id):
-    """Check if a user has completed a course (all lessons + passed assignment if required)"""
+    """Check if a user has completed all lessons and passed all assignments for a course"""
     course = Course.query.get(course_id)
     if not course:
         return False
-    
-    lessons = Lesson.query.filter_by(course_id=course_id).all()
-    if not lessons:
-        return True
-    
-    completed_lessons = 0
-    for lesson in lessons:
-        progress = UserLessonProgress.query.filter_by(
+        
+    # Check lessons completion
+    lessons = course.lessons.all()
+    total_lessons = len(lessons)
+    if total_lessons > 0:
+        completed_lessons = UserLessonProgress.query.filter_by(
             user_id=user_id,
-            lesson_id=lesson.id
-        ).first()
-        if progress and progress.status == 'completed':
-            completed_lessons += 1
-    
-    lessons_completed = (completed_lessons == len(lessons))
-    
+            status='completed'
+        ).join(Lesson).filter(Lesson.course_id == course_id).count()
+        if completed_lessons < total_lessons:
+            return False
+            
+    # Check assignments completion
     assignments = Assignment.query.filter_by(course_id=course_id, is_active=True).all()
-    if not assignments:
-        return lessons_completed
-    
-    for assignment in assignments:
-        if assignment.user_has_passed(user_id):
-            return True
-    
-    return False
+    if assignments:
+        for assignment in assignments:
+            if not assignment.user_has_passed(user_id):
+                return False
+                
+    return True
