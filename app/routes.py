@@ -2558,6 +2558,11 @@ def register_routes(app):
                             if disp_text == orig_text:
                                 display_user_answer = disp_letter
                                 break
+                    else:
+                        # Fallback if text not found in mapping
+                        display_user_answer = user_answer_content
+                else:
+                    display_user_answer = user_answer_content
             else:
                 display_user_answer = user_answer_content
 
