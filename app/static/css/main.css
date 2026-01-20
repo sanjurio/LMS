@@ -255,10 +255,22 @@ footer.mt-5, [data-bs-theme="light"] footer.mt-5, [data-bs-theme="dark"] footer.
 [data-bs-theme="light"] .table td,
 [data-bs-theme="light"] .table th,
 [data-bs-theme="light"] .card,
-[data-bs-theme="light"] .list-group-item {
+[data-bs-theme="light"] .card-body,
+[data-bs-theme="light"] .card-title,
+[data-bs-theme="light"] .list-group-item,
+[data-bs-theme="light"] .admin-container {
   background-color: #ffffff !important;
   color: #1e293b !important;
   border-color: #e2e8f0 !important;
+}
+
+[data-bs-theme="light"] h1, 
+[data-bs-theme="light"] h2, 
+[data-bs-theme="light"] h3, 
+[data-bs-theme="light"] h4, 
+[data-bs-theme="light"] h5, 
+[data-bs-theme="light"] h6 {
+  color: #1e293b !important;
 }
 
 [data-bs-theme="light"] .text-muted {
