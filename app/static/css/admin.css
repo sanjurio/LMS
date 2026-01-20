@@ -117,6 +117,7 @@
   border: 1px solid var(--admin-border);
   border-radius: var(--border-radius);
   overflow: hidden;
+  background-color: var(--admin-card-bg);
 }
 
 .user-table th {
@@ -132,6 +133,16 @@
   border-bottom: 1px solid var(--admin-border);
   background-color: var(--admin-card-bg) !important;
   color: var(--admin-text) !important;
+}
+
+[data-bs-theme="dark"] .user-table td {
+  background-color: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+[data-bs-theme="light"] .user-table td {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
 }
 
 .user-table tr:last-child td {

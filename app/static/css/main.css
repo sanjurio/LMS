@@ -180,7 +180,7 @@ body {
 
 /* Footer light mode */
 [data-bs-theme="light"] footer {
-  background-color: #f1f5f9 !important;
+  background-color: #f8fafc !important;
   color: #1e293b !important;
   border-top: 1px solid #e2e8f0;
 }
