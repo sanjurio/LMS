@@ -186,22 +186,42 @@ footer {
   transition: var(--transition);
 }
 
-[data-bs-theme="light"] {
+[data-bs-theme="light"] footer {
   --footer-bg: #f8fafc;
   --footer-text: #1e293b;
 }
 
-[data-bs-theme="dark"] {
+[data-bs-theme="dark"] footer {
   --footer-bg: #0f172a;
   --footer-text: #ffffff;
 }
 
-footer h3, footer p, footer a, footer .text-white {
+footer h3, footer p, footer a, footer .text-white, footer .list-inline-item a {
   color: var(--footer-text) !important;
+  opacity: 1 !important;
 }
 
 footer a:hover {
   color: var(--primary-color) !important;
+}
+
+/* User Progress Cards Fix */
+[data-bs-theme="light"] .user-details-card,
+[data-bs-theme="light"] .bg-dark {
+    background-color: #ffffff !important;
+    color: #1e293b !important;
+    border: 1px solid #e2e8f0 !important;
+}
+
+[data-bs-theme="light"] .overall-progress-card {
+    background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%) !important;
+    color: #ffffff !important;
+}
+
+[data-bs-theme="light"] .no-course-access {
+    background-color: #f0f9ff !important;
+    color: #0c4a6e !important;
+    border: 1px solid #bae6fd !important;
 }
 
 /* Global Table & Card Text visibility fixes */
