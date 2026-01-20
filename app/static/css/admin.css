@@ -109,7 +109,65 @@
   }
 }
 
-/* Universal table style */
+/* =========================================
+   THEME SYNCHRONIZATION
+   ========================================= */
+
+/* Admin container & Sections */
+.admin-container {
+  background-color: var(--admin-card-bg);
+  color: var(--admin-text);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+[data-bs-theme="light"] .admin-container {
+    background-color: #ffffff !important;
+    color: #1e293b !important;
+    border: 1px solid #e2e8f0 !important;
+}
+
+/* Headings */
+.admin-section-title {
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--admin-border);
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+[data-bs-theme="light"] .admin-section-title {
+    color: var(--primary-color) !important;
+    border-bottom-color: #e2e8f0 !important;
+}
+
+/* User Progress Cards Fix */
+[data-bs-theme="light"] .user-details-card,
+[data-bs-theme="light"] .bg-dark,
+[data-bs-theme="light"] .card.bg-dark {
+    background-color: #ffffff !important;
+    color: #1e293b !important;
+    border: 1px solid #e2e8f0 !important;
+}
+
+[data-bs-theme="light"] .stat-card {
+    background-color: #ffffff !important;
+    color: #1e293b !important;
+    border: 1px solid #e2e8f0 !important;
+}
+
+[data-bs-theme="light"] .user-info .user-name {
+    color: #1e293b !important;
+}
+
+[data-bs-theme="light"] .user-info .user-email {
+    color: #64748b !important;
+}
+
+/* Tables */
 .user-table, .table {
   width: 100%;
   border-collapse: separate;
