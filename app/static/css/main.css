@@ -129,7 +129,7 @@ body {
 .form-control, .form-select {
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
-  color: var(--text-color);
+  color: var(--text-color) !important;
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
 }
@@ -137,8 +137,63 @@ body {
 .form-control:focus, .form-select:focus {
   background-color: var(--card-bg);
   border-color: var(--primary-color);
-  color: var(--text-color);
+  color: var(--text-color) !important;
   box-shadow: 0 0 0 0.2rem rgba(79, 70, 229, 0.1);
+}
+
+/* Fix for specific white text issues */
+[data-bs-theme="light"] .hero-content,
+[data-bs-theme="light"] .card-title,
+[data-bs-theme="light"] .section-title,
+[data-bs-theme="light"] .form-label,
+[data-bs-theme="light"] .text-white-50,
+[data-bs-theme="light"] .navbar-brand,
+[data-bs-theme="light"] .nav-link,
+[data-bs-theme="light"] .hero-title,
+[data-bs-theme="light"] h1, 
+[data-bs-theme="light"] h2, 
+[data-bs-theme="light"] h3, 
+[data-bs-theme="light"] h4, 
+[data-bs-theme="light"] h5, 
+[data-bs-theme="light"] h6,
+[data-bs-theme="light"] p,
+[data-bs-theme="light"] .feature-card h3,
+[data-bs-theme="light"] .feature-card p {
+  color: var(--text-color) !important;
+}
+
+[data-bs-theme="light"] .hero-section {
+    background: #f1f5f9;
+    border: 1px solid var(--border-color);
+}
+
+[data-bs-theme="light"] .hero-title {
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+[data-bs-theme="light"] .hero-subtitle {
+    color: var(--text-muted);
+}
+
+/* Footer light mode */
+[data-bs-theme="light"] footer {
+  background-color: #f1f5f9 !important;
+  color: #1e293b !important;
+  border-top: 1px solid #e2e8f0;
+}
+
+[data-bs-theme="light"] footer h3,
+[data-bs-theme="light"] footer p,
+[data-bs-theme="light"] footer a,
+[data-bs-theme="light"] footer .text-white {
+  color: #1e293b !important;
+}
+
+[data-bs-theme="light"] footer a:hover {
+    color: var(--primary-color) !important;
 }
 
 /* Theme Toggle Button */
