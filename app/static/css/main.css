@@ -287,15 +287,32 @@ footer.mt-5, [data-bs-theme="light"] footer.mt-5, [data-bs-theme="dark"] footer.
   color: #64748b !important;
 }
 
-/* 2FA Specific Styles */
-.token-input {
-  letter-spacing: 4px;
-  font-weight: bold;
+/* Theme Toggle Styling */
+.theme-toggle-btn {
+  background: none;
+  border: none;
+  color: var(--navbar-text);
   font-size: 1.2rem;
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: #fff;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle-btn:hover {
+  background-color: rgba(var(--primary-color-rgb), 0.1);
+  color: var(--primary-color);
+}
+
+[data-bs-theme="dark"] .theme-toggle-btn i::before {
+  content: "\f185"; /* Sun icon for dark mode */
+}
+
+[data-bs-theme="light"] .theme-toggle-btn i::before {
+  content: "\f186"; /* Moon icon for light mode */
 }
 
 /* Token countdown animation */
