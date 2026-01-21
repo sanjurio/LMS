@@ -1121,6 +1121,24 @@ def register_routes(app):
         else:
             return redirect(url_for('admin_users'))
 
+    @app.route('/admin/users/<int:user_id>/update-level', methods=['POST'])
+    @login_required
+    def admin_update_user_level(user_id):
+        if not current_user.is_admin:
+            abort(403)
+        
+        user = User.query.get_or_404(user_id)
+        new_level = request.form.get('access_level', type=int)
+        
+        if new_level in [1, 2, 3, 4]:
+            user.access_level = new_level
+            db.session.commit()
+            flash(f'Access level for {user.username} updated to D{new_level}.', 'success')
+        else:
+            flash('Invalid access level specified.', 'danger')
+            
+        return redirect(url_for('admin_users'))
+
     # Admin course management routes
     @app.route('/admin/courses/add', methods=['GET', 'POST'])
     @login_required
