@@ -1143,22 +1143,34 @@ input:checked + .slider:before {
   gap: 24px;
   align-items: flex-start;
   justify-content: space-between;
-  background: linear-gradient(180deg, rgba(15,23,42,0.98), rgba(12,18,30,0.98));
+  background-color: var(--admin-card-bg);
   border-radius: 12px;
   padding: 22px;
-  box-shadow: 0 8px 28px rgba(2,6,23,0.5);
-  border: 1px solid rgba(255,255,255,0.02);
+  box-shadow: var(--box-shadow);
+  border: 1px solid var(--admin-border);
+  margin-bottom: 1rem;
+}
+
+[data-bs-theme="light"] .user-approval-card {
+    background-color: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
 }
 
 /* left info column */
 .user-info {
   flex: 1 1 60%;
-  color: #cfe8ff;
+  color: var(--admin-text);
 }
-.user-name { font-weight: 700; font-size: 1.25rem; margin-bottom: 6px; color: #ffffff; }
-.user-email { color: #9fb7d8; margin-bottom: 10px; }
-.user-domain, .user-access, .user-registered { color: #bfcfe0; margin-bottom: 6px; font-size: 0.95rem; }
-.user-domain span, .user-access span, .user-registered span { color: #dbeefe; }
+.user-name { font-weight: 700; font-size: 1.25rem; margin-bottom: 6px; color: var(--admin-text); }
+.user-email { color: var(--text-muted); margin-bottom: 10px; }
+.user-domain, .user-access, .user-registered { color: var(--text-muted); margin-bottom: 6px; font-size: 0.95rem; }
+.user-domain span, .user-access span, .user-registered span { color: var(--admin-text); }
+
+[data-bs-theme="light"] .user-name { color: #1e293b !important; }
+[data-bs-theme="light"] .user-email { color: #64748b !important; }
+[data-bs-theme="light"] .user-domain, [data-bs-theme="light"] .user-registered { color: #64748b !important; }
+[data-bs-theme="light"] .user-domain span, [data-bs-theme="light"] .user-registered span { color: #1e293b !important; }
 
 /* right actions column */
 .approval-actions {
@@ -1188,15 +1200,21 @@ input:checked + .slider:before {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background: linear-gradient(180deg,#0f1724,#111827);
-  color: #e6eef5;
-  border: 1px solid rgba(255,255,255,0.06);
+  background-color: var(--admin-card-bg);
+  color: var(--admin-text);
+  border: 1px solid var(--admin-border);
   padding: 10px 12px;
   border-radius: 8px;
   width: 160px;
   text-align: left;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(2,6,23,0.35);
+  box-shadow: var(--box-shadow);
+}
+
+[data-bs-theme="light"] .styled-select {
+    background-color: #ffffff !important;
+    color: #1e293b !important;
+    border: 1px solid #e2e8f0 !important;
 }
 
 /* add a small caret on the right via pseudo element (if not using custom icon) */

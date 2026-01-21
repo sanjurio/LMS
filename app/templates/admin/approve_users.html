@@ -57,15 +57,17 @@
           </button>
 
           <!-- keep reject as a form but placed next to the approve button -->
-          <form method="post" action="{{ url_for('admin_approve_user') }}" class="reject-form-inline" style="display:inline;">
-              <input type="hidden" name="csrf_token" value="{{ form.csrf_token._value() }}" />
-              <input type="hidden" name="user_id" value="{{ user.id }}" />
-              <input type="hidden" name="action" value="reject" />
-              <button type="submit" class="btn btn-danger btn-sm reject-btn"
-                      onclick="return confirm('Are you sure you want to reject this user? This will permanently delete their account.')">
-                  <i class="fas fa-times"></i> Reject
-              </button>
-          </form>
+          <div class="reject-form-inline" style="display:inline-block;">
+              <form method="post" action="{{ url_for('admin_approve_user') }}" style="margin: 0;">
+                  <input type="hidden" name="csrf_token" value="{{ form.csrf_token._value() }}" />
+                  <input type="hidden" name="user_id" value="{{ user.id }}" />
+                  <input type="hidden" name="action" value="reject" />
+                  <button type="submit" class="btn btn-danger btn-sm reject-btn"
+                          onclick="return confirm('Are you sure you want to reject this user? This will permanently delete their account.')">
+                      <i class="fas fa-times"></i> Reject
+                  </button>
+              </form>
+          </div>
       </div>
   </form>
 </div>
