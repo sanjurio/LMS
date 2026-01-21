@@ -536,11 +536,11 @@ input:checked + .slider:before {
 
 /* Universal dark table style */
 .user-table tbody tr td {
-  background-color: #1e293b !important; /* dark slate blue */
+  background-color: transparent !important;
   color: #e2e8f0 !important; /* soft white text */
 }
 .user-table tbody tr:nth-child(even) td {
-  background-color: #273449 !important; /* subtle alternate row */
+  background-color: transparent !important;
 }
 .user-table tbody tr:hover td {
   background-color: #334155 !important; /* highlight on hover */
@@ -904,7 +904,7 @@ input:checked + .slider:before {
 
 /* Table body rows */
 .user-table tbody tr {
-  background: rgba(255,255,255,0.01);
+  background: transparent !important;
   transition: background 0.12s ease;
 }
 .user-table tbody tr:hover {
