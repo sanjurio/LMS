@@ -290,7 +290,7 @@
 }
 
 [data-bs-theme="light"] .course-image {
-    filter: invert(0.1) brightness(1.2) contrast(0.8);
+    background-color: #f1f5f9 !important;
 }
 
 .course-image {
