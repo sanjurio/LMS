@@ -1,10 +1,10 @@
-# Erlang Systems LMS
+# Learning Platform
 
-A Learning Management System built with Flask for enterprise Erlang/OTP training.
+A Learning Management System built with Flask for enterprise training.
 
 ## Overview
 
-This is a web-based Learning Management System (LMS) designed for enterprise training on Erlang/OTP development. It supports user registration, authentication (with optional 2FA), course management, document analysis, and domain-based access control.
+This is a web-based Learning Management System (LMS) designed for enterprise training. It supports user registration, authentication (with optional 2FA), course management, document analysis, and domain-based access control.
 
 ## Tech Stack
 

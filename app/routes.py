@@ -37,7 +37,7 @@ def register_routes(app):
                 return redirect(url_for('admin_dashboard'))
             return redirect(url_for('user_dashboard'))
 
-        return render_template('index.html', title='Welcome to Erlang Systems LMS')
+        return render_template('index.html', title='Welcome to Learning Platform')
 
     @app.route('/login', methods=['GET', 'POST'])
     def login():

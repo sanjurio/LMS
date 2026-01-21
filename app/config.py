@@ -18,8 +18,8 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     
     # Application settings
-    APP_NAME = "Erlang Systems LMS"
-    APP_DESCRIPTION = "Learning Management System for Enterprise Erlang Systems Training"
+    APP_NAME = "Learning Platform"
+    APP_DESCRIPTION = "Learning Management System for Enterprise Training"
     
     # Email domain access control
     DOMAIN_ACCESS = {
