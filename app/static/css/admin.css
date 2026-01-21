@@ -899,16 +899,44 @@ input:checked + .slider:before {
   color: #fca5a5;
 }
 
-/* Responsive tweak */
-@media (max-width: 480px) {
-  .action-menu {
-    right: 0;
-    min-width: 150px;
-  }
-  .kebab-dot {
-    width: 3px;
-    height: 3px;
-  }
+/* Dropdown & Form Control Theme Fixes */
+.styled-select, .form-control {
+  background-color: var(--admin-card-bg) !important;
+  color: var(--admin-text) !important;
+  border: 1px solid var(--admin-border) !important;
+}
+
+[data-bs-theme="light"] .styled-select, 
+[data-bs-theme="light"] .form-control,
+[data-bs-theme="light"] select.form-control {
+    background-color: #ffffff !important;
+    color: #1e293b !important;
+    border: 1px solid #cbd5e1 !important;
+}
+
+[data-bs-theme="light"] .styled-select option,
+[data-bs-theme="light"] .form-control option {
+    background-color: #ffffff !important;
+    color: #1e293b !important;
+}
+
+/* Background fix for user-selection and course-selection boxes */
+[data-bs-theme="light"] .user-selection,
+[data-bs-theme="light"] .course-selection {
+    background-color: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+}
+
+[data-bs-theme="light"] .checkbox-list {
+    background-color: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+}
+
+/* Specific fix for select elements which sometimes inherit browser defaults */
+select.form-control {
+    appearance: auto !important;
+    -webkit-appearance: auto !important;
+    -moz-appearance: auto !important;
 }
 
 

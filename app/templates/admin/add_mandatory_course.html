@@ -46,25 +46,26 @@
         border-radius: 8px;
     }
 
-    /* Fix dark dropdown visibility */
-select.form-control {
-  background-color: #1f2937;   /* dark background */
-  color: #e5e7eb;              /* light text */
-  border: 1px solid #374151;
-}
- 
-/* Dropdown options */
-select.form-control option {
-  background-color: #1f2937;   /* SAME dark bg */
-  color: #e5e7eb;              /* visible text */
-}
- 
-/* Hover / selected option */
-select.form-control option:checked,
-select.form-control option:hover {
-  background-color: #374151;
-  color: #ffffff;
-}
+    /* Fix dark dropdown visibility - Theme Responsive */
+    select.form-control {
+      background-color: var(--admin-card-bg) !important;
+      color: var(--admin-text) !important;
+      border: 1px solid var(--admin-border) !important;
+    }
+     
+    /* Dropdown options */
+    select.form-control option {
+      background-color: var(--admin-card-bg) !important;
+      color: var(--admin-text) !important;
+    }
+
+    [data-bs-theme="light"] select.form-control,
+    [data-bs-theme="light"] select.form-control option {
+      background-color: #ffffff !important;
+      color: #1e293b !important;
+      border-color: #cbd5e1 !important;
+    }
+
 </style>
 {% endblock %}
 
