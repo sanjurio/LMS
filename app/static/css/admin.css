@@ -388,10 +388,11 @@
 }
 
 .interest-item {
-  background-color: var(--bs-gray-800);
-  color: var(--bs-white);
+  background-color: var(--admin-card-bg);
+  color: var(--admin-text);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
+  border: 1px solid var(--admin-border);
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -401,13 +402,27 @@
 .interest-name {
   font-weight: bold;
   margin-bottom: 0.5rem;
-  color: var(--bs-white);
+  color: var(--admin-text);
 }
 
 .interest-description {
-  color: var(--bs-gray-300);
+  color: var(--text-muted);
   margin-bottom: 1rem;
   flex: 1;
+}
+
+[data-bs-theme="light"] .interest-item {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+[data-bs-theme="light"] .interest-name {
+  color: #1e293b !important;
+}
+
+[data-bs-theme="light"] .interest-description {
+  color: #64748b !important;
 }
 
 .interest-actions {
