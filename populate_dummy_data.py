@@ -40,7 +40,11 @@ def populate():
             ("jane_smith", "jane@bt.com", "User123!", "bt.com", 2, True),
             ("bob_jones", "bob@thbs.com", "User123!", "thbs.com", 3, True),
             ("alice_williams", "alice@bt.com", "User123!", "bt.com", 4, True),
-            ("pending_user", "pending@thbs.com", "User123!", "thbs.com", 1, False)
+            ("pending_user", "pending@thbs.com", "User123!", "thbs.com", 1, False),
+            ("sarah_connor", "sarah@thbs.com", "User123!", "thbs.com", 1, False),
+            ("mike_ross", "mike@bt.com", "User123!", "bt.com", 1, False),
+            ("rachel_zane", "rachel@thbs.com", "User123!", "thbs.com", 1, False),
+            ("harvey_specter", "harvey@bt.com", "User123!", "bt.com", 1, False)
         ]
         
         user_objs = []
