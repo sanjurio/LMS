@@ -59,8 +59,17 @@ body {
   gap: 0.5rem;
 }
 
-.navbar-brand i {
-  color: var(--primary-color);
+.navbar-brand span {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.025em;
+}
+
+[data-bs-theme="light"] .navbar-brand {
+  color: #111827 !important;
+}
+
+[data-bs-theme="dark"] .navbar-brand {
+  color: #f9fafb !important;
 }
 
 .nav-link {
