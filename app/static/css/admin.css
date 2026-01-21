@@ -181,8 +181,28 @@
     color: #ffffff !important;
 }
 
-.user-table tr:last-child td {
-  border-bottom: none;
+/* Table row hover fix */
+.user-table tbody tr:hover td, .table tbody tr:hover td, .user-table tr:hover td {
+  background-color: var(--admin-bg) !important;
+  color: var(--admin-text) !important;
+}
+
+[data-bs-theme="light"] .user-table tbody tr:hover td, 
+[data-bs-theme="light"] .table tbody tr:hover td,
+[data-bs-theme="light"] .user-table tr:hover td {
+    background-color: #f1f5f9 !important;
+    color: #1e293b !important;
+}
+
+/* Teams page headings fix */
+[data-bs-theme="light"] .manage-teams-header,
+[data-bs-theme="light"] .user-info-header,
+[data-bs-theme="light"] .teams-access-title,
+[data-bs-theme="light"] .admin-container h1,
+[data-bs-theme="light"] .admin-container h2,
+[data-bs-theme="light"] .admin-container h3,
+[data-bs-theme="light"] .admin-container .user-name {
+    color: #1e293b !important;
 }
 
 .user-table tr:hover td {
