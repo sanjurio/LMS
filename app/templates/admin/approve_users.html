@@ -20,17 +20,18 @@
         </ul>
     </div>
 
-    <div class="admin-container">
-        <h2 class="admin-section-title">Users Awaiting Approval</h2>
+    <h2 class="admin-section-title">Users Awaiting Approval</h2>
 
-        {% if not pending_users %}
+    {% if not pending_users %}
+    <div class="admin-container">
         <div class="alert alert-info">
             <p>There are no pending user registrations that require approval.</p>
         </div>
-        {% else %}
-        <div class="pending-users">
-            {% for user in pending_users %}
-            <div class="user-approval-card">
+    </div>
+    {% else %}
+    <div class="pending-users">
+        {% for user in pending_users %}
+        <div class="user-approval-card">
                 <div class="user-info">
                     <div class="user-name">{{ user.username }}</div>
                     <div class="user-email">{{ user.email }}</div>
@@ -73,8 +74,7 @@
 </div>
 
             {% endfor %}
-        </div>
-        {% endif %}
     </div>
+    {% endif %}
 </div>
 {% endblock %}
