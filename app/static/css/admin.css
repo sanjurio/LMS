@@ -642,6 +642,13 @@ input:checked + .slider:before {
     background-color: #198754 !important;
 }
 
+[data-bs-theme="light"] .badge-success {
+    color: #ffffff !important;
+    background-color: #157347 !important;
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
 .badge-danger {
     color: #fff !important;
     background-color: #dc3545 !important;
