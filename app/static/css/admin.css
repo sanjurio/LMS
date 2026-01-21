@@ -1149,6 +1149,8 @@ input:checked + .slider:before {
   box-shadow: var(--box-shadow);
   border: 1px solid var(--admin-border);
   margin-bottom: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 [data-bs-theme="light"] .user-approval-card {
@@ -1200,9 +1202,9 @@ input:checked + .slider:before {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-color: var(--admin-card-bg);
-  color: var(--admin-text);
-  border: 1px solid var(--admin-border);
+  background-color: var(--admin-card-bg) !important;
+  color: var(--admin-text) !important;
+  border: 1px solid var(--admin-border) !important;
   padding: 10px 12px;
   border-radius: 8px;
   width: 160px;
@@ -1230,7 +1232,15 @@ input:checked + .slider:before {
 }
 
 /* action buttons styling */
-.approval-actions-row { display: flex; gap: 8px; justify-content: flex-end; width: 100%; }
+.approval-actions-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 6px;
+  flex-wrap: nowrap;
+}
 
 /* Adjusted button styles to match global theme */
 .btn-sm.approve-btn, .btn-sm.reject-btn, .btn.btn-success, .btn.btn-danger {
