@@ -447,13 +447,9 @@ def register_routes(app):
                     username=token.username,
                     email=token.email,
                     password_hash=token.password_hash,
-                    access_level=session.get('registration_access_level')
+                    access_level=session.get('registration_access_level', 1)
                 )
                 user.set_access_based_on_domain()
-                # Ensure we keep registration level if domain didn't provide one
-                if not user.access_level:
-                    user.access_level = session.get('registration_access_level')
-                
                 db.session.add(user)
                 
                 token.verified = True

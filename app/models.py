@@ -27,7 +27,7 @@ class User(UserMixin, db.Model):
     is_approved = db.Column(db.Boolean, default=False)
     otp_secret = db.Column(db.String(32))
     is_2fa_enabled = db.Column(db.Boolean, default=False)
-    access_level = db.Column(db.String(20))  # D1, D2, D3, D4
+    access_level = db.Column(db.Integer, default=1)  # 1=D1, 2=D2, 3=D3, 4=D4
     email_domain = db.Column(db.String(50))  # Store email domain for quick access
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     
@@ -62,22 +62,8 @@ class User(UserMixin, db.Model):
             domain = self.email.split('@')[-1].lower()
             self.email_domain = domain
             
-            # Get domain info but only apply if user hasn't selected a level
-            # OR if domain logic is strictly required to override.
-            # User said: "I want the level set by user to stay that way in admin panel."
-            # and "the email domain access is necessary. I don't want you to touch that at all."
-            # This is slightly contradictory if both try to set the same field.
-            # I will prioritize keeping the user selected level if it's already set.
-            
             access_info = get_domain_access_info(self.email)
-            domain_level = access_info.get('access_level')
-            
-            # If domain info is specific (not a fallback), it might be the 'domain access' user wants.
-            # But they also want user-set level to stay.
-            # Let's only set it if it's not already set.
-            if not self.access_level and domain_level:
-                 self.access_level = domain_level
-            
+            self.access_level = access_info.get('access_level', 'basic')
             self.is_approved = False  # Always require admin approval
     
     def can_view_videos(self):
@@ -198,7 +184,7 @@ class Course(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     created_by = db.Column(db.Integer, db.ForeignKey('users.id'))
     issue_certificates = db.Column(db.Boolean, default=False)
-    required_level = db.Column(db.String(20))  # D1, D2, D3, D4
+    required_level = db.Column(db.Integer, default=1)  # 1=D1, 2=D2, 3=D3, 4=D4
     
     # Relationships with proper cascade delete
     lessons = db.relationship('Lesson', backref='course', lazy='dynamic', cascade='all, delete-orphan')
@@ -220,12 +206,7 @@ class Course(db.Model):
             return True
             
         # Hierarchical level check: user level must be >= course required level
-        # Since we changed to strings, we need a mapping for comparison
-        level_map = {'D1': 1, 'D2': 2, 'D3': 3, 'D4': 4}
-        user_val = level_map.get(user.access_level, 2)
-        course_val = level_map.get(self.required_level, 2)
-        
-        if user_val < course_val:
+        if (user.access_level or 1) < (self.required_level or 1):
             return False
 
         # Check if this is a THBS-restricted course
