@@ -49,6 +49,11 @@ def create_app():
     login_manager.init_app(app)
     csrf.init_app(app)
     
+    @app.before_request
+    def make_session_permanent():
+        from flask import session
+        session.permanent = True
+    
     # Configure login manager
     login_manager.login_view = 'login'
     login_manager.login_message = 'Please log in to access this page.'

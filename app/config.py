@@ -3,6 +3,9 @@ import os
 class Config:
     SECRET_KEY = os.environ.get('SESSION_SECRET', 'dev-key-change-in-production')
     
+    # Session settings
+    PERMANENT_SESSION_LIFETIME = 1800  # 30 minutes in seconds
+    
     # Session cookie settings for iframe/proxy environment
     # Use SameSite=None for cross-site iframe contexts, Secure required with SameSite=None
     SESSION_COOKIE_SAMESITE = 'None'

@@ -63,7 +63,7 @@ def register_routes(app):
 
             # Special case for admin: bypass 2FA
             if user.is_admin:
-                login_user(user, remember=form.remember_me.data)
+                login_user(user, remember=False)
                 next_page = request.args.get('next')
                 if not next_page or urlparse(next_page).netloc != '':
                     next_page = url_for('index')
@@ -72,7 +72,7 @@ def register_routes(app):
 
             # Check if user has 2FA enabled globally or for this user
             if not user.is_2fa_enabled:
-                login_user(user, remember=form.remember_me.data)
+                login_user(user, remember=False)
                 next_page = request.args.get('next')
                 if not next_page or urlparse(next_page).netloc != '':
                     next_page = url_for('index')
